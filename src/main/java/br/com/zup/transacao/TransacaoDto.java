@@ -1,5 +1,7 @@
 package br.com.zup.transacao;
 
+import br.com.zup.estabelecimento.Estabelecimento;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -7,16 +9,15 @@ public class TransacaoDto {
 
     private String id;
     private BigDecimal valor;
-    private EstabelecimentoDto estabelecimento;
-    private CartaoDto cartao;
     private LocalDateTime efetivadaEm;
+    private Estabelecimento estabelecimento;
 
-    public TransacaoDto(String id, BigDecimal valor, EstabelecimentoDto estabelecimento, CartaoDto cartao, LocalDateTime efetivadaEm) {
-        this.id = id;
-        this.valor = valor;
-        this.estabelecimento = estabelecimento;
-        this.cartao = cartao;
-        this.efetivadaEm = efetivadaEm;
+    public TransacaoDto(Transacao transacao) {
+        this.id = transacao.getId();
+        this.valor = transacao.getValor();
+        this.efetivadaEm = transacao.getEfetivadaEm();
+        this.estabelecimento = transacao.getEstabelecimento();
+
     }
 
     public String getId() {
@@ -27,15 +28,11 @@ public class TransacaoDto {
         return valor;
     }
 
-    public EstabelecimentoDto getEstabelecimento() {
-        return estabelecimento;
-    }
-
-    public CartaoDto getCartao() {
-        return cartao;
-    }
-
     public LocalDateTime getEfetivadaEm() {
         return efetivadaEm;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
     }
 }

@@ -1,1 +1,17 @@
+server:
+  port: 8081
 
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    url: jdbc:h2:mem:desafio-transacao
+    password:
+  kafka:
+    consumer:
+      auto-offset-reset: latest
+      group-id: transacoes-consumer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    topic: transacoes
+    bootstrap-servers: ${KAFKA_HOST:localhost:9092}

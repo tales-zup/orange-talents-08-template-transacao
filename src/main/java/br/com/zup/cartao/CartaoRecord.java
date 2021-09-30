@@ -1,11 +1,14 @@
-package br.com.zup.transacao;
+package br.com.zup.cartao;
 
-public class CartaoDto {
+public class CartaoRecord {
 
     private String id;
     private String email;
 
-    public CartaoDto(String id, String email) {
+    public CartaoRecord() {
+    }
+
+    public CartaoRecord(String id, String email) {
         this.id = id;
         this.email = email;
     }
@@ -16,5 +19,9 @@ public class CartaoDto {
 
     public String getEmail() {
         return email;
+    }
+
+    public Cartao toModel() {
+        return new Cartao(id, email);
     }
 }
