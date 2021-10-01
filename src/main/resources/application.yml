@@ -15,3 +15,12 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
     topic: transacoes
     bootstrap-servers: ${KAFKA_HOST:localhost:9092}
+  h2:
+    console:
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:18080/auth/realms/Proposta}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:18080/auth/realms/Proposta/protocol/openid-connect/certs}
